@@ -2,33 +2,70 @@ require "sinatra"
 require "sinatra/reloader"
 
 get("/") do
-  "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
-  "
+  <<~HTML
+  <body>
+    <div>
+      <a href="/rock">
+        Play Rock
+      </a>
+    </div>
+
+    <div>
+      <a href="/paper">
+        Play Paper
+      </a>
+    </div>
+
+    <div>
+      <a href="/scissors">
+        Play Scissors
+      </a>
+    </div>
+    <h1>
+      Welcome to Rock-Paper-Scissors!
+    </h1>
+  </body>
+  HTML
 end
 
 get("/rock") do
+  @my_move = "rock"
   moves = ["rock", "paper", "scissors"]
-  
   @comp_move = moves.sample
-  
-  if comp_move == "rock"
+  if @comp_move == "rock"
     @outcome = "tied"
-  elsif comp_move == "paper"
+  elsif @comp_move == "paper"
     @outcome = "lost"
   else
     @outcome = "won"
   end
-  
   erb(:rock)
-  
 end
 
 get("/scissors") do
-  "This string will be sent as the body of the response"
+  @my_move = "scissors"
+  moves = ["rock", "paper", "scissors"]
+  @comp_move = moves.sample
+  if @comp_move == "scissors"
+    @outcome = "tied"
+  elsif @comp_move == "rock"
+    @outcome = "lost"
+  else
+    @outcome = "won"
+  end
+  erb(:rock)
 end
 
 get("/paper") do
-  "This string will be sent as the body of the response"
+  @my_move = "paper"
+  moves = ["rock", "paper", "scissors"]
+  @comp_move = moves.sample
+  if @comp_move == "paper"
+    @outcome = "tied"
+  elsif @comp_move == "scissors"
+    @outcome = "lost"
+  else
+    @outcome = "won"
+  end
+  erb(:rock)
 end
