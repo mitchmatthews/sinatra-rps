@@ -2,30 +2,7 @@ require "sinatra"
 require "sinatra/reloader"
 
 get("/") do
-  <<~HTML
-  <body>
-    <div>
-      <a href="/rock">
-        Play Rock
-      </a>
-    </div>
-
-    <div>
-      <a href="/paper">
-        Play Paper
-      </a>
-    </div>
-
-    <div>
-      <a href="/scissors">
-        Play Scissors
-      </a>
-    </div>
-    <h1>
-      Welcome to Rock-Paper-Scissors!
-    </h1>
-  </body>
-  HTML
+  erb(:home)
 end
 
 get("/rock") do
